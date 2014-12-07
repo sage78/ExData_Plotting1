@@ -19,8 +19,8 @@ data <- read.table("household_power_consumption.txt",
 			 sep = ";", 
 			 na.strings = "?", 
 			 colClasses=c("character","character","numeric","numeric",
-					  "numeric","numeric","numeric","numeric",
-					  "numeric"))
+                                "numeric","numeric","numeric","numeric",
+                                "numeric"))
 
 # add timestamp column
 data$Timestamp <- paste(data$Date, data$Time)
@@ -32,7 +32,7 @@ data$Timestamp <- strptime(data$Timestamp, "%d/%m/%Y %H:%M:%S")
 
 # limit data between 2007-02-01 and 2007-02-02
 data <- subset(data, data$Date >= as.Date("01/02/2007", "%d/%m/%Y") & 
-			   data$Date <= as.Date("02/02/2007", "%d/%m/%Y"))
+                     data$Date <= as.Date("02/02/2007", "%d/%m/%Y"))
 
 # plot Global Active Power to plot1.png
 png(filename = "plot1.png", 
