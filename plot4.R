@@ -7,20 +7,20 @@ Sys.setlocale("LC_TIME", "English")
 #if not already done, download dataset and unzip it
 if( !file.exists("household_power_consumption.txt")) {
     download.file("http://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", 
-			"data.zip", 
-			mode="wb")
+                  "data.zip", 
+                  mode="wb")
 
     unzip("data.zip")
 }
 
 # read data in
 data <- read.table("household_power_consumption.txt", 
-			 header=TRUE, 
-			 sep = ";", 
-			 na.strings = "?", 
-			 colClasses=c("character","character","numeric","numeric",
-					  "numeric","numeric","numeric","numeric",
-					  "numeric"))
+                   header=TRUE, 
+                   sep = ";", 
+                   na.strings = "?", 
+                   colClasses=c("character","character","numeric","numeric",
+                                "numeric","numeric","numeric","numeric",
+                                "numeric"))
 
 # add timestamp column
 data$Timestamp <- paste(data$Date, data$Time)
@@ -32,7 +32,7 @@ data$Timestamp <- strptime(data$Timestamp, "%d/%m/%Y %H:%M:%S")
 
 # limit data between 2007-02-01 and 2007-02-02
 data <- subset(data, data$Date >= as.Date("01/02/2007", "%d/%m/%Y") & 
-			   data$Date <= as.Date("02/02/2007", "%d/%m/%Y"))
+                     data$Date <= as.Date("02/02/2007", "%d/%m/%Y"))
 
 # plot 4 images to plot4.png in total, in 2x2 matrix 
 png(filename = "plot4.png", 
