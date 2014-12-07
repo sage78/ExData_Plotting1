@@ -7,18 +7,18 @@ Sys.setlocale("LC_TIME", "English")
 # if not already done, download dataset and unzip it
 if( !file.exists("household_power_consumption.txt")) {
     download.file("http://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", 
-			"data.zip", 
-			mode="wb")
+                  "data.zip", 
+                  mode="wb")
 
     unzip("data.zip")
 }
 
 # read data in
 data <- read.table("household_power_consumption.txt", 
-			 header=TRUE, 
-			 sep = ";", 
-			 na.strings = "?", 
-			 colClasses=c("character","character","numeric","numeric",
+                   header=TRUE, 
+                   sep = ";", 
+                   na.strings = "?", 
+                   colClasses=c("character","character","numeric","numeric",
                                 "numeric","numeric","numeric","numeric",
                                 "numeric"))
 
